@@ -4,8 +4,6 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import authRoutes from './routes/auth.js';
 import movieRoutes from './routes/movies.js';
-import auth from './middleware/authMiddelware.js';
-import Movie from './models/Movie.js';
 dotenv.config();
 
 const app = express();
