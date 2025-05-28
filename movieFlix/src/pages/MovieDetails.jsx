@@ -18,7 +18,7 @@ const MovieDetails = () => {
     const fetchMovie = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`https://movies-flix-hf3g.vercel.app/movies/${id}`);
+        const res = await axios.get(`https://movies-flix-iota.vercel.app/api/movies/${id}`);
         setMovie(res.data);
         setError('');
       } catch (err) {
