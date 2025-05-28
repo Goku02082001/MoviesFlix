@@ -38,7 +38,7 @@ const MovieDetails = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`https://movies-flix-hf3g.vercel.app/api/movies/${id}`);
+      await axios.delete(`https://movies-flix-iota.vercel.app/api/movies/${id}`);
       navigate('/movies');
     } catch (err) {
       setError('Error deleting movie');
