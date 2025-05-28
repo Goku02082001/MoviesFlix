@@ -49,7 +49,7 @@ const setAuthToken = (token) => {
   
   const register = async (formData) => {
     try {
-      const res = await axios.post('http://localhost:3000/api/auth/register', formData);
+      const res = await axios.post('https://movies-flix-iota.vercel.app/api/auth/register', formData);
       setToken(res.data.token);
       setUser(res.data.user);
       setIsAuthenticated(true);
@@ -63,7 +63,7 @@ const setAuthToken = (token) => {
   
   const login = async (formData) => {
     try {
-      const res = await axios.post('http://localhost:3000/api/auth/login', formData);
+      const res = await axios.post('https://movies-flix-iota.vercel.app/api/auth/login', formData);
       setToken(res.data.token);
       setUser(res.data.user);
       setIsAuthenticated(true);
