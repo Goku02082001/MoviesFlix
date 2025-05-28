@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-  origin:'https://movies-flix-iota.vercel.app/'
+  origin:'*'
 }));
 const PORT = process.env.PORT || 3000;
 
