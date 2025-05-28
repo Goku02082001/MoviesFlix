@@ -18,7 +18,7 @@ const MovieDetails = () => {
     const fetchMovie = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`http://localhost:3000/api/movies/${id}`);
+        const res = await axios.get(`https://movies-flix-iota.vercel.app/movies/${id}`);
         setMovie(res.data);
         setError('');
       } catch (err) {
@@ -38,7 +38,7 @@ const MovieDetails = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3000/api/movies/${id}`);
+      await axios.delete(`https://movies-flix-iota.vercel.app/api/movies/${id}`);
       navigate('/movies');
     } catch (err) {
       setError('Error deleting movie');

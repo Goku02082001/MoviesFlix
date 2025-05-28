@@ -10,7 +10,7 @@ const AddMovie = () => {
 
   const handleSubmit = async (formData) => {
     try {
-      await axios.post('http://localhost:3000/api/movies/postAMovie', formData);
+      await axios.post('https://movies-flix-iota.vercel.app/api/movies/postAMovie', formData);
       navigate('/movies');
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to add movie. Please try again.');
