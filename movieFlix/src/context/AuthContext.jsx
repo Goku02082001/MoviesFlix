@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
-// Create context
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -10,15 +10,13 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Load user on mount or token change
+  
   useEffect(() => {
     const loadUser = async () => {
       if (token) {
         setAuthToken(token);
         try {
-          // We're just using the token itself, no need for a /me endpoint
-          // The token contains user ID and username
-          setIsAuthenticated(true);
+          
           setLoading(false);
         } catch (error) {
           localStorage.removeItem('token');
@@ -37,21 +35,21 @@ export const AuthProvider = ({ children }) => {
     loadUser();
   }, [token]);
 
-  // Set auth token for all requests
-  const setAuthToken = (token) => {
-    if (token) {
-      axios.defaults.headers.common['x-auth-token'] = token;
-      localStorage.setItem('token', token);
-    } else {
-      delete axios.defaults.headers.common['x-auth-token'];
-      localStorage.removeItem('token');
-    }
-  };
+const setAuthToken = (token) => {
+  if (token) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`; 
+    localStorage.setItem('token', token);
+  } else {
+    delete axios.defaults.headers.common['Authorization'];
+    localStorage.removeItem('token');
+  }
+};
 
-  // Register user
+
+  
   const register = async (formData) => {
     try {
-      const res = await axios.post('/api/auth/register', formData);
+      const res = await axios.post('http://localhost:3000/api/auth/register', formData);
       setToken(res.data.token);
       setUser(res.data.user);
       setIsAuthenticated(true);
@@ -62,10 +60,10 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Login user
+  
   const login = async (formData) => {
     try {
-      const res = await axios.post('/api/auth/login', formData);
+      const res = await axios.post('http://localhost:3000/api/auth/login', formData);
       setToken(res.data.token);
       setUser(res.data.user);
       setIsAuthenticated(true);

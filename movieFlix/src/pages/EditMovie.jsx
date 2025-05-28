@@ -16,7 +16,7 @@ const EditMovie = () => {
     const fetchMovie = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`/api/movies/${id}`);
+        const res = await axios.get(`http://localhost:3000/api/movies/${id}`);
         setMovie(res.data);
         setError('');
       } catch (err) {
@@ -34,7 +34,7 @@ const EditMovie = () => {
 
   const handleSubmit = async (formData) => {
     try {
-      await axios.put(`/api/movies/${id}`, formData);
+      await axios.put(`http://localhost:3000/api/movies/${id}`, formData);
       navigate(`/movies/${id}`);
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to update movie');

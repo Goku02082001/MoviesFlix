@@ -18,7 +18,7 @@ const MovieList = () => {
     const fetchMovies = async () => {
       try {
         setLoading(true);
-        const res = await axios.get('/api/movies');
+        const res = await axios.get('http://localhost:3000/api/movies/');
         setMovies(res.data);
         setError('');
       } catch (err) {
@@ -50,7 +50,7 @@ const MovieList = () => {
     return matchesGenre && matchesYear && matchesSearch;
   });
 
-  // Get unique genres for filter dropdown
+  
   const genres = [...new Set(movies.map(movie => movie.genre))].sort();
   // Get unique years for filter dropdown
   const years = [...new Set(movies.map(movie => movie.year))].sort((a, b) => b - a);
